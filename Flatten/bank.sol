@@ -1,7 +1,6 @@
-// File: @uniswap/v3-core/contracts/interfaces/callback/IUniswapV3SwapCallback.sol
 
-// SPDX-License-Identifier: GPL-2.0-or-later
-pragma solidity >=0.5.0;
+
+pragma solidity ^0.8.0;
 
 /// @title Callback for IUniswapV3PoolActions#swap
 /// @notice Any contract that calls IUniswapV3PoolActions#swap must implement this interface
@@ -22,11 +21,7 @@ interface IUniswapV3SwapCallback {
     ) external;
 }
 
-// File: @uniswap/v3-periphery/contracts/interfaces/ISwapRouter.sol
 
-// SPDX-License-Identifier: GPL-2.0-or-later
-pragma solidity >=0.7.5;
-pragma abicoder v2;
 
 /// @title Router token swapping functionality
 /// @notice Functions for swapping tokens via Uniswap V3
@@ -92,9 +87,7 @@ interface ISwapRouter is IUniswapV3SwapCallback {
 
 // File: @openzeppelin/contracts/token/ERC20/IERC20.sol
 
-// SPDX-License-Identifier: MIT
 
-pragma solidity ^0.7.0;
 
 /**
  * @dev Interface of the ERC20 standard as defined in the EIP.
@@ -170,10 +163,7 @@ interface IERC20 {
     event Approval(address indexed owner, address indexed spender, uint256 value);
 }
 
-// File: @uniswap/v3-periphery/contracts/libraries/TransferHelper.sol
 
-// SPDX-License-Identifier: GPL-2.0-or-later
-pragma solidity >=0.6.0;
 
 library TransferHelper {
     /// @notice Transfers tokens from the targeted address to the given destination
@@ -237,8 +227,7 @@ library TransferHelper {
 
 // Bank contract using for Matic/USDC swap and deposit RelayHub on Stream Meta Transactions
 
-pragma solidity 0.8.13;
-pragma abicoder v2;
+
 
 
 
@@ -251,24 +240,7 @@ interface IWETH9 is IERC20 {
     function withdraw(uint256) external;
 }
 
-interface IERC20 {
-   
-    event Transfer(address indexed from, address indexed to, uint256 value);
 
-    event Approval(address indexed owner, address indexed spender, uint256 value);
-
-    function totalSupply() external view returns (uint256);
-
-    function balanceOf(address account) external view returns (uint256);
-
-    function transfer(address to, uint256 value) external returns (bool);
-
-    function allowance(address owner, address spender) external view returns (uint256);
-
-    function approve(address spender, uint256 value) external returns (bool);
-    
-    function transferFrom(address from, address to, uint256 value) external returns (bool);
-}
 
 interface IRelayHub {
     function depositFor(address target) external payable;
@@ -523,16 +495,16 @@ contract MyBank {
     
 
 
-    function distributeFee (address _token)  external {// TODO Events
-        IERC20 token = IERC20(_token);
-        uint tokenAmount = token.balanceOf(address(this));
-        uint amountU60 = tokenAmount * 6000 / BASIS_POINTS;// 60%
-        uint amountU25 = tokenAmount * 2500 / BASIS_POINTS;// 25%
-        uint amountU15 = tokenAmount * 1500 / BASIS_POINTS;// 15%
-        token.transfer(amountU60, u60);
-        token.transfer(amountU25, u25);
-        token.transfer(amountU15, u15);
-    }
+    // function distributeFee (address _token)  external {// TODO Events
+    //     IERC20 token = IERC20(_token);
+    //     uint tokenAmount = token.balanceOf(address(this));
+    //     uint amountU60 = tokenAmount * 6000 / BASIS_POINTS;// 60%
+    //     uint amountU25 = tokenAmount * 2500 / BASIS_POINTS;// 25%
+    //     uint amountU15 = tokenAmount * 1500 / BASIS_POINTS;// 15%
+    //     token.transfer(amountU60, u60);
+    //     token.transfer(amountU25, u25);
+    //     token.transfer(amountU15, u15);
+    // }
 
 
 
