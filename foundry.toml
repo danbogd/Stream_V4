@@ -1,6 +1,0 @@
-[profile.default]
-cache = true
-src = 'contracts/'
-out = 'out'
-libs = ['lib']
-test = 'tests'
