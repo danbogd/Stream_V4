@@ -3,13 +3,17 @@ pragma solidity ^0.8.13;
 
 import {Test, console2} from "forge-std/Test.sol";
 import {Bank} from "../src/Bank.sol";
+import {SwapRouter} from "../lib/v3-periphery/contracts/SwapRouter.sol";
 
 contract BankTest is Test {
     Bank public bank;
-    address public swapRouter = a0xE592427A0AEce92De3Edee1F18E0157C05861564;
+    SwapRouter public swaprouter;
 
     function setUp() public {
-        bank = new Bank(swapRouter);
+        swaprouter = new SwapRouter;
+
+        address sr = address(swaprouter);
+        bank = new Bank(sr);
         
     }
 
