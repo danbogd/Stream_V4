@@ -62,7 +62,7 @@ interface AggregatorV3Interface {
     returns (uint80 roundId, int256 answer, uint256 startedAt, uint256 updatedAt, uint80 answeredInRound);
 }
 
-contract MyBank {
+contract Bank {
 
     IWETH9 public constant WMatic = IWETH9(0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270);
     ISwapRouter public immutable swapRouter;
