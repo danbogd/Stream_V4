@@ -5,8 +5,8 @@
 
 pragma solidity ^0.8.13;
 pragma abicoder v2;
-
-import '@uniswap/v3-periphery/contracts/interfaces/ISwapRouter.sol';
+@uniswap/v3-periphery/
+import 'contracts/interfaces/ISwapRouter.sol';
 import '@uniswap/v3-periphery/contracts/libraries/TransferHelper.sol';
 import '@openzeppelin/contracts/token/ERC20/IERC20.sol';
 
