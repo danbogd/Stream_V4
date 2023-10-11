@@ -8,7 +8,7 @@ pragma abicoder v2;
 
 import '@uniswap/v3-periphery/contracts/interfaces/ISwapRouter.sol';
 import '@uniswap/v3-periphery/contracts/libraries/TransferHelper.sol';
-import '@openzeppelin/contracts/token/ERC20/IERC20.sol';
+//import '@openzeppelin/contracts/token/ERC20/IERC20.sol';
 
 
 /// @title Interface for WETH9
@@ -20,24 +20,24 @@ interface IWETH9 is IERC20 {
     function withdraw(uint256) external;
 }
 
-interface IERC20 {
+// interface IERC20 {
    
-    event Transfer(address indexed from, address indexed to, uint256 value);
+//     event Transfer(address indexed from, address indexed to, uint256 value);
 
-    event Approval(address indexed owner, address indexed spender, uint256 value);
+//     event Approval(address indexed owner, address indexed spender, uint256 value);
 
-    function totalSupply() external view returns (uint256);
+//     function totalSupply() external view returns (uint256);
 
-    function balanceOf(address account) external view returns (uint256);
+//     function balanceOf(address account) external view returns (uint256);
 
-    function transfer(address to, uint256 value) external returns (bool);
+//     function transfer(address to, uint256 value) external returns (bool);
 
-    function allowance(address owner, address spender) external view returns (uint256);
+//     function allowance(address owner, address spender) external view returns (uint256);
 
-    function approve(address spender, uint256 value) external returns (bool);
+//     function approve(address spender, uint256 value) external returns (bool);
     
-    function transferFrom(address from, address to, uint256 value) external returns (bool);
-}
+//     function transferFrom(address from, address to, uint256 value) external returns (bool);
+// }
 
 interface IRelayHub {
     function depositFor(address target) external payable;
@@ -298,9 +298,10 @@ contract Bank {
         uint amountU60 = tokenAmount * 6000 / BASIS_POINTS;// 60%
         uint amountU25 = tokenAmount * 2500 / BASIS_POINTS;// 25%
         uint amountU15 = tokenAmount * 1500 / BASIS_POINTS;// 15%
-        token.transfer(amountU60, u60);
-        token.transfer(amountU25, u25);
-        token.transfer(amountU15, u15);
+        token.transfer(u60, amountU60);
+        token.transfer(u25, amountU25);
+        token.transfer(u15, amountU15);
+        
     }
 
 
