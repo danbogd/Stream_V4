@@ -1,2 +1,12 @@
 node_modules
 build
+yarn-error.log
+
+.env
+coverage
+coverage.json
+typechain
+.DS_Store
+
+#Foundry files
+out
